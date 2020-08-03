@@ -7,7 +7,7 @@
       </div>
       <v-card>
         <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
+          {{ $auth.user.name }}様、ようこそ。
         </v-card-title>
         <v-card-text>
           <p>
@@ -74,7 +74,7 @@
         <v-card-actions>
           <v-spacer />
           <v-btn color="primary" nuxt to="/inspire">
-            Continue
+            {{ $auth.user.name }}
           </v-btn>
         </v-card-actions>
       </v-card>
