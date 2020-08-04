@@ -41,11 +41,11 @@
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-content>
+    <v-Main>
       <v-container>
         <nuxt />
       </v-container>
-    </v-content>
+    </v-Main>
     <v-footer :absolute="!fixed" app>
       <span>&copy; {{ new Date().getFullYear() }} Fuminori Ogawa</span>
     </v-footer>

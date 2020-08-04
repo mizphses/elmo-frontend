@@ -1,8 +1,17 @@
 <template>
 <div>
   <div>
-  <h1>ログインユーザ</h1>
-  <form @submit.prevent="loginUser">
+  <h1>ユーザ登録</h1>
+  <form @submit.prevent="registerUser">
+    <v-row>
+      <v-col cols="12" sm="6" md="3">
+        <v-text-field
+          v-model="user.name"
+          label="名前"
+        >
+        </v-text-field>
+      </v-col> 
+    </v-row>
     <v-row>
       <v-col cols="12" sm="6" md="3">
         <v-text-field
@@ -25,7 +34,7 @@
     </v-row>
     </div>
     <v-btn color="primary" type="submit">
-      ログイン
+      登録
     </v-btn>
   </form>
   </div>
@@ -38,15 +47,19 @@
     data(){
       return {
         user:{
+          name:'',
           email:'',
           password:''
         }
       }
     },
     methods:{
-      loginUser(){
-        this.$auth.loginWith('local',{
-          data:this.user
+      registerUser(){
+        this.$axios.post('/api/auth/register',this.user)
+                    .then((response) => {
+                        this.$auth.loginWith('local',{
+                            data: this.user
+                    })
         })
       },
     }
